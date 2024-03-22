@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            background-image: url('https://i.pinimg.com/564x/5c/c9/11/5cc9118bc2c009ae83e49bb0d186aba5.jpg');
+            background-repeat: none;
+            background-size: cover;
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 20px;
+        }
+
+        .front {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: rotateY(180deg);
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+
+        button {
+            background-color: #005580;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #002233;
+        }
+
+        .flip-link {
+            text-decoration: underline;
+            color: #007bff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card" id="card">
+        <div class="front">
+            <h3 style="margin-top: -30px;">Login Page</h3>
+            <br>
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <button onclick="nav()">Login </button>
+            <p class="flip-link" onclick="flipCard()">New to website? Sign up here.</p>
+        </div>
+        <div class="back">
+            <h2>Sign Up</h2>
+            <label for="newUsername">Username</label>
+            <input type="text" id="newUsername" placeholder="Choose a username">
+            <label for="newPassword">Password</label>
+            <input type="password" id="newPassword" placeholder="Choose a password">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password">
+            <button>Sign Up</button>
+            <p class="flip-link" onclick="flipCard()">Already have an account? Login here.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function flipCard() {
+        var card = document.getElementById('card');
+        card.classList.toggle('flipped');
+    }
+
+    function nav() {
+        window.location.href = "home.html";
+    }
+</script>
+
+</body>
+</html>

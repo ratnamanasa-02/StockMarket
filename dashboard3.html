@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Stock Market Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background-color: black;
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+
+        img {
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            margin-left: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px white;
+        }
+
+
+
+        nav img {
+            height: 30px;
+            width: 100px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: aqua;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto;
+            /* Adjust margin to accommodate the fixed navbar */
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filter label {
+            margin-right: 10px;
+        }
+
+        .filter select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .stocks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .stock {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .stock h3 {
+            margin-top: 0;
+        }
+
+        .stock p {
+            margin: 5px 0;
+        }
+
+        .graph {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            height: 200px;
+            /* Placeholder for the graph */
+            background-image: url('https://i.pinimg.com/564x/f5/02/69/f50269b932bcf7f877e015075f38b503.jpg');
+            background-repeat: none;
+            background-size: cover;
+        }
+
+        #intro {
+            background-image: url('https://i.pinimg.com/564x/5c/c9/11/5cc9118bc2c009ae83e49bb0d186aba5.jpg');
+            background-repeat: none;
+            background-position: fixed;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .search-panel {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-panel input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 25px;
+            margin-right: 20px;
+            width: 1000px;
+        }
+
+        .search-panel button {
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 25px; /* Adjust border-radius to match the text level */
+            cursor: pointer;
+            padding: 10px 20px; /* Adjust padding to match the text level */
+        }
+
+        .search-panel button:hover {
+            background-color: aqua;
+        }
+
+        #stockText {
+            font-size: 30px; /* Adjust the font size as needed */
+        }
+
+        .search-panel span {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><img src="logo.png"></li>
+            <li>
+                <div class="search-panel">
+                    <input type="text" placeholder="Search...">
+                    <button><span>&#128269;</span></button>
+                </div>
+            </li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Filter</a></li>
+            <li><a href="ss">Stocks</a></li>
+            <li><a href="#">My Account</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <img src="Pictures/17.png" alt="Stock Graph 1">
+        <!-- <img src="Pictures/4.png" alt="Stock Graph 1" style="max-width: 50%; height: auto;">
+        <img src="Pictures/8.png" alt="Stock Graph 1" style="max-width: 50%; height: auto;"> -->
+        <img src="Pictures/12.png" alt="Stock Graph 1" style="max-width: 50%; height: auto;">
+        <img src="Pictures/16.png" alt="Stock Graph 1" style="max-width: 50%; height: auto;">
+
+        <div id="stockText">
+            <p>Investing in stocks is like planting seeds for a prosperous future. As the market grows, so does your potential for
+                financial success. Stay positive, stay informed, and watch your investments flourish over time. Remember, every dip
+                is an opportunity, and every rise is a reason to celebrate! Successful investors understand that patience and knowledge
+                are key. Stay informed about market trends, explore diverse investment options, and remember that every setback is a
+                stepping stone to future success. The stock market is a canvas where your financial masterpiece unfolds.</p>
+        </div>
+
+        <div id="hello">
+            <button id="cartButton" style="display: inline; background-color: green; color: white;" class="actionButton" onclick="addToCart()">Add to Cart</button>
+            <button id="remindButton" style="display: inline; background-color: blue; color: white;" class="actionButton" onclick="setReminder()">Remind Me</button>
+        </div>
+
+        <div id="dataBelowImage">
+            <!-- Your data here -->
+            <p>This is some data below the image.</p>
+        </div>
+    </div>
+
+    <script>
+        function addToCart() {
+            alert("Shares added to cart!");
+        }
+
+        function setReminder() {
+            alert("Reminder set!");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Stock Market Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background-color: black;
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 10px 20px;
+            z-index: 1000;
+            img{
+                height: 30px;
+                width: 100px;
+            
+            }
+        
+
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color:aqua;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto;
+            /* Adjust margin to accommodate the fixed navbar */
+            padding: 0 20px;
+        }
+
+        .filter {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filter label {
+            margin-right: 10px;
+        }
+
+        .filter select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .stocks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .stock {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .stock h3 {
+            margin-top: 0;
+        }
+
+        .stock p {
+            margin: 5px 0;
+        }
+
+        .graph {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            height: 200px;
+            /* Placeholder for the graph */
+            background-image: url('https://i.pinimg.com/564x/f5/02/69/f50269b932bcf7f877e015075f38b503.jpg');
+            background-repeat: none;
+            background-size: cover;
+        }
+
+        #intro {
+            background-image: url('https://i.pinimg.com/564x/5c/c9/11/5cc9118bc2c009ae83e49bb0d186aba5.jpg');
+            background-repeat: none;
+            background-position: fixed;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .search-panel {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-panel input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 400px;
+            margin-left: 400px;
+        }
+
+        .search-panel button {
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-panel button:hover{
+            background-color: aqua;
+        }
+
+
+        #intro p {
+            height: 400px;
+            width: 600px;
+            margin-top: 90px;
+            display: none;
+            color: white;
+            font-size: 22px;
+            line-height: 1.5;
+            padding: 20px;
+        }
+        .search-panel span {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><img src="logo.png"></li>
+            <li>
+                
+                <div class="search-panel">
+                    <input type="text" placeholder="Search...">
+                    <button><span>&#128269;</span></button>
+                </div>
+            </li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Filter</a></li>
+            <li ><a href="ss">Stocks</a></li>
+            <li><a href="#">My Account</a></li>
+        </ul>
+    </nav>
+    <div id="intro">
+        <h1>Hello</h1>
+    </div>
+
+    <div class="container">
+        <div class="filter">
+            <label for="sort">Sort By:</label>
+            <select name="sort" id="sort">
+                <option value="price">Price</option>
+                <option value="alphabetical">Alphabetical</option>
+            </select>
+        </div>
+
+        <div id='ss' class="stocks">
+            <!-- Sample Stock -->
+            <div class="stock">
+                <h3>APPLE</h3>
+                <p>Price: $100</p>
+                <p>Change: +2.5%</p>
+                <div class="graph">
+
+                </div>
+                <button>View Details</button>
+            </div>
+            <div class="stock">
+                <h3>GOOGLE</h3>
+                <p>Price: $150</p>
+                <p>Change: -1.2%</p>
+                <div class="graph"></div>
+                <button>View Details</button>
+            </div>
+            <div class="stock">
+                <h3>MICROSOFT</h3>
+                <p>Price: $90</p>
+                <p>Change: +0.8%</p>
+                <div class="graph"></div>
+                <button>View Details</button>
+            </div>
+            <div class="stock">
+                <h3>AMAZON</h3>
+                <p>Price: $75</p>
+                <p>Change: -2.1%</p>
+                <div class="graph"></div>
+                <button>View Details</button>
+            </div>
+            <div class="stock">
+                <h3>Company E</h3>
+                <p>Price: $120</p>
+                <p>Change: +3.0%</p>
+                <div class="graph"></div>
+                <button>View Details</button>
+            </div>
+            <div class="stock">
+                <h3>Company F</h3>
+                <p>Price: $80</p>
+                <p>Change: +1.5%</p>
+                <div class="graph"></div>
+                <button>View Details</button>
+            </div>
+            <div class="stock">
+                <h3>Company G</h3>
+                <p>Price: $110</p>
+                <p>Change: -0.5%</p>
+                <div class="graph"></div>
+                <button>View Details</button>
+            </div>
+            <div class="stock">
+                <h3>Company H</h3>
+                <p>Price: $95</p>
+                <p>Change: -0.2%</p>
+                <div class="graph"></div>
+                <button>View Details</button>
+            </div>
+            <div class="stock">
+                <h3>Company I</h3>
+                <p>Price: $130</p>
+                <p>Change: +2.8%</p>
+                <div class="graph"></div>
+                <button>View Details</button>
+            </div>
+            <div class="stock">
+                <h3>Company J</h3>
+                <p>Price: $85</p>
+                <p>Change: -0.9%</p>
+                <div class="graph"></div>
+                <button>View Details</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        var introText = "Welcome to our Stock Market website. The stock market is a marketplace where traders buy and sell shares of publicly traded companies. It's a key component of the economy and serves as a barometer of overall economic health. Our website provides valuable information about various stocks, their prices, and changes in value over time. Explore our platform to stay updated on the latest market trends and make informed investment decisions.";
+        var $introParagraph = $('<p>', '</p>');
+        $introParagraph.hide();
+        $('#intro').append($introParagraph);
+        $introParagraph.fadeIn(1000);
+
+        function typeWriter(text, index) {
+            if (index < text.length) {
+                $introParagraph.append(text.charAt(index));
+                index++;
+                setTimeout(function () {
+                    typeWriter(text, index);
+                }, 15);
+            }
+        }
+
+        typeWriter(introText, 0);
+
+        $('#ss').click(function () {
+            window.location.href = 'dashboard.html';
+        });
+
+        $('#ss').click(function (intValue) {
+            window.location.href = 'dashboard1.html';
+        });
+
+        $('#ss').click(function (stringValue) {
+            window.location.href = 'dashboard2.html';
+        });
+
+        $('#ss').click(function (charValue) {
+            window.location.href = 'dashboard3.html';
+        });
+
+        $('a[href="#s"]').on('click', function (event) {
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: $('#ss').offset().top
+            }, 1000);
+        });
+
+        $('a[href="#ss"]').on('click', function (event) {
+            event.preventDefault();
+            var targetDiv = $(this).attr('href');
+            $('html, body').animate({
+                scrollTop: $(targetDiv).offset().top
+            }, 1000);
+        });
+
+        // Event binding for navigation to "dashboard.html"
+        $('#ss').click(function () {
+    var stockName = $(this).find('h3').text();
+    switch (stockName) {
+        case 'APPLE':
+            window.location.href = 'dashboard.html';
+            break;
+        case 'GOOGLE':
+            window.location.href = 'dashboard1.html';
+            break;
+        case 'MICROSOFT':
+            window.location.href = 'dashboard2.html';
+            break;
+        case 'AMAZON':
+            window.location.href = 'dashboard3.html';
+            break;
+        // Add more cases for other stock names if needed
+        default:
+            // Handle the default case
+            break;
+    }
+});
+
+
+
+        $('#sort').on('change', function () {
+            var sortBy = $(this).val();
+            $('.stocks').fadeOut(500, function () {
+                var $stocks = $('.stock');
+                $stocks.sort(function (a, b) {
+                    var aValue = $(a).find('h3').text().toUpperCase();
+                    var bValue = $(b).find('h3').text().toUpperCase();
+                    if (sortBy === 'price') {
+                        var aPrice = parseFloat($(a).find('p').eq(0).text().replace('$', ''));
+                        var bPrice = parseFloat($(b).find('p').eq(0).text().replace('$', ''));
+                        return aPrice - bPrice;
+                    } else {
+                        return aValue.localeCompare(bValue);
+                    }
+                });
+                $('.stocks').html($stocks);
+                $('.stocks').fadeIn(500);
+            });
+        });
+    });
+</script>
